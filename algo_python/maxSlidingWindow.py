@@ -7,9 +7,9 @@ for i in range(len(nums)-k+1):
   r.append(max(nums[i:i+k]))
 
 
-# print(r)
+print(r)
 
 # 마지막3에 해당하는 -3은 출력되지 않는다
-print(nums[0:3])
+# print(nums[0:3])
 
   

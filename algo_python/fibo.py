@@ -21,10 +21,10 @@ def fibo(n):
     return d[n]
 
 
-# fibo(10)
+fibo(10)
 
-for i in range(0, 10):
-    print(i)
+
+
 
 
 

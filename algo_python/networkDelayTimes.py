@@ -45,6 +45,7 @@ class Solution:
         # 모든 노드 최단 경로 존재 여부 판별
         # 처음에 N값을 4로 했잖아.. 이 안에 못끝내면 -1을 리턴
         # 끝내면 끝내는데 걸린 시간을 리턴
+        print(dist)
         if len(dist) == N:
             return max(dist.values())
         return -1
@@ -52,4 +53,4 @@ class Solution:
 
 times = [[3,1,5],[3,2,2],[2,1,2],[3,4,1],[4,5,1],[5,6,1],[6,7,1],[7,8,1],[8,1,1]]
 sol = Solution()
-print(sol.networkDelayTime(times,4,3))
+print(sol.networkDelayTime(times,8,3))
