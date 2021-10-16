@@ -5,20 +5,19 @@ class ListNode:
 
 
 class Solution:
-    
     def reverseList(self, node: ListNode, prev:ListNode=None) -> ListNode:
-        # print(node.val)
+        # print(self.getListNode(node))
+        # print('-----------')
         if not node:
             return prev
         next, node.next = node.next, prev
-        # print(next.val if next else 'None') 
-        # print(node.val if node else 'None') 
+        # print(next.val if next else 'None', node.val if node else 'None') 
         return self.reverseList(next,node)
 
     def getListNode(self, l:ListNode):
         if l:
-            print(l.val)
-        if l.next:
+            print(l.val if l else 'None')
+        if l and l.next:
             self.getListNode(l.next)
 
 
