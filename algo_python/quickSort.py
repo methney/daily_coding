@@ -36,5 +36,3 @@ printf(arr)
 
 
 
-
-

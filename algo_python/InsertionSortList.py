@@ -11,8 +11,21 @@ class Solution:
     def insertionSortList(self, head:ListNode) -> ListNode:
         cur = parent = ListNode(None)
 
-        if cur.next.val < head.val:
-            print('valid')
+        while head:
+            while cur.next and cur.next.val < head.val:
+                cur = cur.next
+            cur.next, head.next, head = head, cur.next, head.next
+            cur = parent
+
+        return cur.next
     
+    def getList(self,l:ListNode):
+        if l:
+            print(l.val)
+        if l.next :
+            self.getList(l.next)
+
+
 aa = Solution()
-aa.insertionSortList(ListNode(4))
+bb = aa.insertionSortList(ListNode(4,ListNode(2,ListNode(1,ListNode(3)))))
+aa.getList(bb)

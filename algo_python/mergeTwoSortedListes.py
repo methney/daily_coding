@@ -27,4 +27,4 @@ l2 = ListNode(1,ListNode(3,ListNode(4)))
 
 aa = Solution()
 bb = aa.mergeTwoLists(l1,l2)
-print(aa.getListNode(bb))
+aa.getListNode(bb)

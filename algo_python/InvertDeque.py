@@ -12,19 +12,26 @@ class TreeNode:
 class Solution:
     def invertTree(self, root: TreeNode) -> TreeNode:
         stack = collections.deque([root])
-
         #  TreeNode로 할경우, stack은 루트인 4, 하나만 세팅된다. 
         while stack:
-            node = stack.popleft() #pop()과 popleft()로 DFS, BFS를 구현할수 있다.
-            print('popleft', node if node is None else node.val)
+            print('--',len(stack))
+            # 여기서 하나씩 pop하고..아래서 다시 stack에 자식노드를 append를 한다???
+            node = stack.popleft() #pop()과 popleft()로 DFS(스택), BFS(큐)를 구현할수 있다.
+            print('popleft', 'NNN' if node is None else node.val)
             # 부모 노드 부터 하향식 스왑
             if node:
-                # node.left, node.right = node.right, node.left
+                # invert를 어디서하느냐의 문제(1이냐2냐), DFS에서는 2번은 의미가 없네
+                # 1.
+                node.left, node.right = node.right, node.left
 
+                # 왜 여기서 이걸 다시 stack에 다시 붙이나? 
+                # 이런식으로 다시 넣게되면 순서가 완전 뒤로 밀리는거 아냐? 
+                # 그냥 이렇게 해야 stack을 배열처럼 사용할수가 있다고 생각해라
                 stack.append(node.left)
                 stack.append(node.right)
 
-                node.left, node.right = node.right, node.left
+                # 2.
+                # node.left, node.right = node.right, node.left
 
         return root
 
@@ -36,6 +43,7 @@ tree.left.left = TreeNode(1)
 tree.left.right = TreeNode(3)
 tree.right.left = TreeNode(6)
 tree.right.right = TreeNode(9)
+
 
 sol = Solution()
 sol.invertTree(tree)

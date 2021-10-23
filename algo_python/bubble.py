@@ -32,13 +32,6 @@ def bubbleSort(arr):
     
     return arr
 
-bubbleSort(arr)
-printVal(arr)
-
-
-
-
-
-
-
+# bubbleSort(arr)
+# printVal(arr)
 

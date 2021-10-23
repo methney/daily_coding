@@ -2,6 +2,7 @@ import collections
 import heapq
 from typing import List
 
+# Breadth First Search grid shortest path
 # https://www.youtube.com/watch?v=KiCBXu4P-2Y
 # 참고 
 
@@ -32,7 +33,8 @@ class Solution:
         # 3 에서 연결가능한 노드를 찾아서 큐에 등록(3은 뺌)... 이걸 계속 반복..
         # 사실 while Q라는건 이 안에서 Q값이 변동이 있다는 것
         while Q:
-            time, node = heapq.heappop(Q) # 이 heapq자체가 structure이다. 변수가 아니야 
+            # Q에서 최소값을 추출(그냥추출하면 최소값인거다, 자료구조가..)
+            time, node = heapq.heappop(Q) # 이 heapq자체가 structure이다. 변수가 아니야
             # print(time,node)
 
             if node not in dist:
@@ -45,7 +47,7 @@ class Solution:
         # 모든 노드 최단 경로 존재 여부 판별
         # 처음에 N값을 4로 했잖아.. 이 안에 못끝내면 -1을 리턴
         # 끝내면 끝내는데 걸린 시간을 리턴
-        print(dist)
+        # print(dist)
         if len(dist) == N:
             return max(dist.values())
         return -1
@@ -54,3 +56,4 @@ class Solution:
 times = [[3,1,5],[3,2,2],[2,1,2],[3,4,1],[4,5,1],[5,6,1],[6,7,1],[7,8,1],[8,1,1]]
 sol = Solution()
 print(sol.networkDelayTime(times,8,3))
+# 3에서 출발해 모든노드가 신호를 받을수 있는 시간을 계산하라

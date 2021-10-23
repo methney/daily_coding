@@ -61,10 +61,10 @@ bst.insert(9)
 bst.insert(2)
 bst.insert(4)
 
-        3
-    1       5
-        2       9
-            4
+    #     3
+    # 1       5
+    #     2       9
+    #         4
 
 printVal(bst)
 

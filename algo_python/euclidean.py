@@ -13,7 +13,7 @@
 
 def GCD(a,b):
     smaller = min(a,b)
-    print(smaller)
+    # print(smaller)
     for i in range(1,smaller+1):
         # a와 b를 완전하게 나눠떨어지는 i 근데, 제일작은거겠다
         if a % i == 0 and b % i == 0:
