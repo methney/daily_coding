@@ -1,5 +1,5 @@
-
-
+# 로무토파티션이란? 제일오른쪽을 그냥 파티션으로 잡고 시작하는 방법
+# 퀵소트가 되려 머지소트보다 코드는 간단하다.
 arr = [5, 4, 7, 8, 2, 6, 1, 3]
 
 
@@ -15,7 +15,9 @@ def quickSort(arr):
 
     if len(arr) <=1 :
         return arr
+    # 피벗은 '값'이다.  
     pivot = arr[len(arr)//2]
+
     arr_low, arr_high, arr_mid  = [], [], []
     for num in arr:
         if num < pivot:

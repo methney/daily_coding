@@ -6,11 +6,14 @@ grid = [
   ["0","0","0","0","0"]
 ]
 
-for i in range(len(grid)):
-    for j in range(len(grid[0])):
-        print(grid[i][j])
-    print('--------')
+# for i in range(len(grid)):
+#     for j in range(len(grid[0])):
+#         print(grid[i][j])
+#     print('--------')
 
 
 
-  
+if 'a' != 'a' :
+  print ('tt') 
+else:
+  print('aa')

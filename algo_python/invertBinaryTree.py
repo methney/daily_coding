@@ -8,5 +8,8 @@ aa = collections.deque(tt)
 print(aa)
 print(aa.popleft())
 print(aa)
-aa.append(10)
-print(aa)
+# aa.append(10)
+# print(aa)
+
+
+
