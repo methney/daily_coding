@@ -25,7 +25,7 @@ d= re.match(pattern2, 'https://rhostem.github.com')
 # print(d.group()) 
 
 # lookbehind
-# ?<=로 시작하는 문자열을 찾는다. ?<=의 문자열은 캡처링그룹에 포함시키지않는다.
+# ?<= 로 시작하는 문자열을 찾는다(https). ?<=의 문자열은 캡처링그룹에 포함시키지않는다.
 pattern3 = '(?<=https):\/\/(\w+)\.github.com'
 e= re.search(pattern3, 'https://rhostem.github.com')
 print(e.group())

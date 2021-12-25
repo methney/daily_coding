@@ -35,8 +35,13 @@ def threeSum(nums:List[int])->List[List[int]]:
     nums.sort()
 
     for i in range(len(nums)-2):
+        # 왜 연속된2개가 같으면 break하는걸까?
+        # 합이0을 구하는거라면, 남은2개가 각각 -값을 가져서 완성될수도 있는거잖아? 
+        # 정의가 혹시 중복된 숫자가 없는것인가? (제한까지왜구현을해?)
         if i>0 and nums[i] == nums[i-1]:
             continue
+
+        # 양끝을 정하고, 양쪽에서 출발하여 비교
         left, right = i+1, len(nums)-1
         while left < right:
             sum = nums[i] + nums[left] + nums[right]

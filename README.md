@@ -1,6 +1,5 @@
 # Daily Coding Question
 
-If I'm just available, I just put new practices everyday.
 
 ## Algorithm & Data structure
 
@@ -28,3 +27,7 @@ String,Number,Array
 * Fibo
 * Euclidean
 * DoubleArray
+
+Graph
+* networkDealyTimes
+* shortestPath

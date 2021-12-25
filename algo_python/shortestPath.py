@@ -142,5 +142,7 @@ while not findEnd(maze, add):
         # 또한 넣을때에 새로넣을값을 앞에넣냐 뒤에넣냐에 따라 값이 달라지게되니..조심(경우에따라 사용하면된다.)
         # basicQueue.py 참고 
         put = add + j
+
+        # 이번에 추가된 경로가 valid 한거냐? 
         if valid(maze, put):
             nums.put(put)
