@@ -30,3 +30,11 @@ l1 = ListNode(1,ListNode(2,ListNode(3,ListNode(4,ListNode(5)))))
 aa = Solution()
 bb = aa.reverseList(l1)
 aa.getListNode(bb)
+
+
+# reverseList(1-2-3-4-5, None)
+# reverseList(2-3-4-5, 1-None)
+# reverseList(3-4-5, 2-1-None)
+# reverseList(4-5, 3-2-1-None)
+# reverseList(5, 4-3-2-1-None)
+# reverseList(None, 5-4-3-2-1-None)

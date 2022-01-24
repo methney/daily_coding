@@ -1,0 +1,42 @@
+# you can write to stdout for debugging purposes, e.g.
+# print("this is a debug message")
+import collections
+import copy
+
+def solution(A,S):
+    result = []
+    
+    # left, right = 1, 1
+    # while left < len(A) and right < len(A):
+    #     sum:float = 0.0
+    #     for a in A:
+    #         sum += a
+    #         tmp.append(a)
+
+    #         if sum/left == S:
+    #             left+=1
+    #             result.append(copy.copy(tmp))
+
+
+    idx = 0
+    sum:float = 0.0
+    dist = collections.defaultdict(int)
+    # dist = {}
+    path = ''
+    tmp = []
+    for a in A:
+        sum += a
+        idx += 1
+        path += str(a)
+        tmp.append(a)
+        if sum/idx == S and dist[path] not in dist:
+            result.append(copy.copy(tmp))
+            dist[path] = a 
+
+    print(result)
+
+A = [2,1,3]
+S = 2.0
+
+solution(A,S)
+    

@@ -17,9 +17,6 @@ def search(nums:List[int], target:int) -> int:
     return -1
     
 
-
-
-
 nums = [0,1,2,3,4,5]
 target = 4
 print(search(nums,target))

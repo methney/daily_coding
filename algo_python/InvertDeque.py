@@ -22,7 +22,7 @@ class Solution:
             if node:
                 # invert를 어디서하느냐의 문제(1이냐2냐), DFS에서는 2번은 의미가 없네
                 # 1.
-                # node.left, node.right = node.right, node.left
+                node.left, node.right = node.right, node.left
 
                 # 왜 여기서 이걸 다시 stack에 다시 붙이나? 
                 # 이런식으로 다시 넣게되면 순서가 완전 뒤로 밀리는거 아냐? 

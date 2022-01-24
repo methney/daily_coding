@@ -59,7 +59,7 @@ def mergeSort(arr):
     # 여기를 돌면서, 쪼갠 배열을 머지한다.
     # 여기서는 비교하는 둘중에 작은것을 먼저 arr_merge 배열에 담는다. 5 < 4 
     while l < len(arr_lower) and h < len(arr_high) :
-        print('compare:',arr_lower[l],arr_high[h],'/', arr_lower, arr_high, arr_merge)
+        # print('compare:',arr_lower[l],arr_high[h],'/', arr_lower, arr_high, arr_merge)
         if arr_lower[l] < arr_high[h]:
             arr_merge.append(arr_lower[l])
             l+=1
@@ -69,15 +69,14 @@ def mergeSort(arr):
 
     # 아래부분이 이해가 안갔다. 위에서는 비교하는 둘중에 작은넘을 arr_merge에 넣는다. 4,5라면 여기서는 arr_merge에 4만 넣는다.
     # 5를 넣는 부분은 아래에서 처리한다. 
-    print('s----', arr_merge, arr_lower[l:], arr_high[h:])
+    # print('s----', arr_merge, arr_lower[l:], arr_high[h:])
     arr_merge += arr_lower[l:]
     arr_merge += arr_high[h:]
-    print('e----', arr_merge)
+    # print('e----', arr_merge)
 
     return arr_merge 
 
-arr = mergeSort(arr)
-# printf(arr)
+mergeSort(arr)
 
 
 

@@ -69,4 +69,4 @@ print(sol.networkDelayTime(times,8,3))
 
 # dist의 values가 뭐야? 
 test = {1:2, 2:3, 3:4}
-# print(test.values())
+print(test.values())

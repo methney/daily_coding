@@ -4,7 +4,7 @@ maze = ['4','5','2','8']
 nums = queue.Queue()
 nums.put('0')
 for i in maze:
-    print(i)
+    # print(i)
     # 이렇게하면, 무슨배열처럼 쭈루륵 다 나오느냐? 처음에 넣은순서대로 나오는데...numgs.get()을 할때마다 하나씩 나온다.
     v = nums.get()
     # print(v)
@@ -15,5 +15,5 @@ for i in maze:
     # together = i + v
     together = v + i
     nums.put(together)
-# print(nums.get())
+print(nums.get())
 

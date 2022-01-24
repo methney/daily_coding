@@ -131,7 +131,7 @@ maze  = createMaze2()
 
 # will next row and column is valid in maze then keep going
 while not findEnd(maze, add): 
-    # 원래는 numgs.get()을 여러번실행하면 queue에 담긴값이 FIFO로 넣은순서대로 나오게 되어있다.
+    # 원래는 nums.get()을 여러번실행하면 queue에 담긴값이 FIFO로 넣은순서대로 나오게 되어있다.
     # https://www.geeksforgeeks.org/queue-in-python/
     # 여기서는 한번만실행했는데, 이유는 그냥 하나에다가 몰빵해서..이럴꺼면 queue를 왜써? 
     add = nums.get()
