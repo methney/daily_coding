@@ -29,7 +29,7 @@ class Solution:
 
         # 딕셔너리 자료형을 만든다(그냥 해시맵)
         # what's for? 노드까지 걸리는 시간? 
-        # 재사용과 최종결과값을 저장하기 위한 용도
+        # 재사용과 최종결과값을 저장하기 위한 용도(최종경로의 과정 저장값)
         dist = collections.defaultdict(int)
 
         # 우선 순위 큐 최소값 기준으로 정점까지 최단 경로 삽입
@@ -45,6 +45,8 @@ class Solution:
             # 그 node가 dist목록에 이미 있다면 큐에 등록하지 않음(시간이 가장 짧게 걸린것을 선택!)
             if node not in dist:
                 dist[node] = time
+                
+                # 실제노드배열에서 해당노드에서 연결되는 다른노드와 거기까지의 시간정보
                 for v, w in graph[node]:
                     # print(node, v,w)
                     # 다음노드(v)까지 가기위한 시간(w) 
@@ -55,9 +57,10 @@ class Solution:
         # 모든 노드 최단 경로 존재 여부 판별
         # 처음에 N값을 4로 했잖아.. 이 안에 못끝내면 -1을 리턴
         # 끝내면 끝내는데 걸린 시간을 리턴
-        # print(dist)
+        # print('dist', dist)
         if len(dist) == N:
             return max(dist.values())
+            # 최대값이라는게 가장 마지막값(가장마지막경로후의 시간)
         return -1
 
 
