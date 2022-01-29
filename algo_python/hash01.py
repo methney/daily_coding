@@ -26,9 +26,11 @@ def solution(participant, completion):
     d = dict()
     for p in participant:
         d[p] = d.get(p,0)+1
+    for c in completion:
+        d[c] -= 1
 
-    print(d)
-
+    re = [x for x in d if d[x]>0]
+    return re[0] if len(re)>0 else ''
 
 # participant = ["marina", "josipa", "nikola", "vinko", "filipa"]
 # completion = ["josipa", "filipa", "marina", "nikola"]
