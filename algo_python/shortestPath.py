@@ -134,6 +134,7 @@ while not findEnd(maze, add):
     # 원래는 nums.get()을 여러번실행하면 queue에 담긴값이 FIFO로 넣은순서대로 나오게 되어있다.
     # https://www.geeksforgeeks.org/queue-in-python/
     # 여기서는 한번만실행했는데, 이유는 그냥 하나에다가 몰빵해서..이럴꺼면 queue를 왜써? 
+    
     add = nums.get()
     # print('---', add)
     for j in ["L", "R", "U", "D"]:
@@ -142,7 +143,18 @@ while not findEnd(maze, add):
         # 또한 넣을때에 새로넣을값을 앞에넣냐 뒤에넣냐에 따라 값이 달라지게되니..조심(경우에따라 사용하면된다.)
         # basicQueue.py 참고 
         put = add + j
-
         # 이번에 추가된 경로가 valid 한거냐? 
+        # put이 아마도 RRDDLU 뭐 이런식으로 될꺼야...
         if valid(maze, put):
             nums.put(put)
+
+
+
+
+# test = queue.Queue()
+# test.put("a")
+# test.put('b')
+
+# # 넣은순서대로 나온다. queue니깐...
+# print(test.get())
+# print(test.get())
