@@ -30,6 +30,9 @@ def solution(participant, completion):
         d[c] -= 1
 
     re = [x for x in d if d[x]>0]
+
+    # return list(k for k,v in d.items() if v==1).pop()
+
     return re[0] if len(re)>0 else ''
 
 # participant = ["marina", "josipa", "nikola", "vinko", "filipa"]
