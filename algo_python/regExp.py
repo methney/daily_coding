@@ -39,3 +39,12 @@ pattern4 = '\D+(?=rhostem)'
 gg= re.search(pattern4, 'https://rhostem.github.com')
 print(gg.group())
 # print(gg.group(1))
+
+
+
+# import re
+
+# mylist = ["dog", "cat", "wildcat", "thundercat", "cow", "hooo"]
+# r = re.compile(".*cat")
+# newlist = list(filter(r.match, mylist)) # Read Note below
+# print(newlist)
