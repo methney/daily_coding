@@ -11,7 +11,7 @@
 # 각 전화번호의 길이는 1 이상 20 이하입니다.
 # 같은 전화번호가 중복해서 들어있지 않습니다.
 
-import re 
+# import re 
 def solution(phone_book):
     # newList = []
 
@@ -28,22 +28,33 @@ def solution(phone_book):
     # return False if len(newList)>0 else True
 
     # --------------------------
+    # bubble sort 방식으로 처리하기 (효율성에서 탈락됨)
+    # ret = True
+    # phone_book.sort()
+    # for x in range(len(phone_book)-1):
+    #     pattern = '^' + phone_book[x] + '\d+'
+    #     # if ret and phone_book[x+1].find(phone_book[x])!=-1:
+    #     if ret and re.search(pattern, phone_book[x+1]):
+    #         ret = False
+
+    # return ret
+
+    # ---------------------------
+
+    # bubble sort 방식으로 처리하기 (효율성에서 탈락됨)
+    # find는 발견하면 index없으면 -1
 
     ret = True
     phone_book.sort()
     for x in range(len(phone_book)-1):
-        pattern = '^' + phone_book[x] + '\d+'
-        # if ret and phone_book[x+1].find(phone_book[x])!=-1:
-        if ret and re.search(pattern, phone_book[x+1]):
+        if ret and phone_book[x+1].find(phone_book[x])==0: # 여기서 0이라는거 자체가 첫번째항목을 말함 > 따라서 위와 같이 정규식 안해도된다.
             ret = False
-
     return ret
 
-
     # ----------------------------
+    # 풀이에 있었던 방식 
 
     # answer = True
-
     # phone_book.sort()
     # book_len = len(phone_book)
     # for i in range(book_len):
@@ -63,5 +74,6 @@ phone_book = ["119", "97674223", "1195524421"]
 # phone_book = ["12","123","1235","567","88"]
 
 print(solution(phone_book))
+
 
 

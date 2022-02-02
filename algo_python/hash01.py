@@ -23,16 +23,20 @@ def solution(participant, completion):
     #         a.remove(p)
     # return a[0] if len(a) else ''
 
+    # list 선언은 d=dict() 
+    # 리스트이름의 값을 구하는 방법 d.get(p) 인데, 초기값설정 0으로 하면 d.get(p,0)
     d = dict()
     for p in participant:
         d[p] = d.get(p,0)+1
     for c in completion:
         d[c] -= 1
 
-    re = [x for x in d if d[x]>0]
-
+    # list에서 이름과 값을 리스트컴프리핸션으로 빼내는 방법
+    # for k,v in d.items():
+    #     print(k,'/',v)
     # return list(k for k,v in d.items() if v==1).pop()
 
+    re = [x for x in d if d[x]>0]
     return re[0] if len(re)>0 else ''
 
 # participant = ["marina", "josipa", "nikola", "vinko", "filipa"]
@@ -41,4 +45,4 @@ def solution(participant, completion):
 participant = ["mislav", "stanko", "mislav", "ana"]
 completion = ["stanko", "ana", "mislav"]
 
-print(solution(participant, completion))
+solution(participant, completion)
