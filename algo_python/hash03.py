@@ -26,5 +26,23 @@
 
 
 def solution(clothes):
-    v = dict()
-    
+    arr = dict()
+    for i in clothes:
+        if i[1] in arr:
+            print(arr, '/', i[1],'/',i[0])
+            arr[i[1]].append(i[0])
+        else :
+            arr.setdefault(i[1],[i[0]])
+    v = []
+    for i in arr.values():
+        v.append(len(i)+1)
+    s = 1
+    for i in v:
+        s *= i
+    s -= 1
+    return s
+            
+            
+clothes = [["yellowhat", "headgear"], ["bluesunglasses", "eyewear"], ["green_turban", "headgear"]]
+
+print(solution(clothes))
