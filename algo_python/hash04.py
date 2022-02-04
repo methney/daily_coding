@@ -19,42 +19,54 @@
 # ----------------------------------
 # 다른이 풀이 
 
-def solution(genres, plays):
-    answer = []
-    from collections import defaultdict
-    s = defaultdict(dict) # classic: [곡 인덱스]
-    s_num = defaultdict(int) # 장르별 플레이합산 저장
-    # Zip은 같은 배열크기일때, 하나씩 빼서 나래비 세워줌
-    for g,(idx,p) in zip(genres, enumerate(plays)):
-        s[g][idx] = p
-        s_num[g] += p
+# def solution(genres, plays):
+#     answer = []
+#     from collections import defaultdict
+#     s = defaultdict(dict) # classic: [곡 인덱스]
+#     s_num = defaultdict(int) # 장르별 플레이합산 저장
 
-    print(s) # {'classic': {0: 500, 2: 150, 3: 800}, 'pop': {1: 600, 4: 2500}}) 
-    print(s_num) # {'classic': 1450, 'pop': 3100})
-    s_num = [k for k,v in sorted(s_num.items(), key= lambda items: items[1], reverse=True)]
-    print(s_num)
+#     # Zip은 같은 배열크기일때, 하나씩 빼서 나래비 세워줌
+#     for g,(idx,p) in zip(genres, enumerate(plays)):
+#         s[g][idx] = p
+#         s_num[g] += p
 
-    for g in s_num:
-        answer.extend([k for k,v in sorted(s[g].items(), key= lambda items: items[1], reverse=True)][:2]) # 두개씩모아 베스트앨범을 출시하려고 합니...
-    print(answer) # [4,1,3,0]
-    return answer
+#     print(s) # {'classic': {0: 500, 2: 150, 3: 800}, 'pop': {1: 600, 4: 2500}}) 
+#     print(s_num) # {'classic': 1450, 'pop': 3100})
+#     s_num = [k for k,v in sorted(s_num.items(), key= lambda items: items[1], reverse=True)]
+#     print(s_num)
+
+#     for g in s_num:
+#         answer.extend([k for k,v in sorted(s[g].items(), key= lambda items: items[1], reverse=True)][:2]) # 두개씩모아 베스트앨범을 출시하려고 합니...
+#     print(answer) # [4,1,3,0]
+#     return answer
 
 # ---------------------------------
 
-# def solution(g,p):
-    # for i in enumerate(p):
-    #     print(i)
-    # 다행1열의 배열을 enumerate 출력하면, 다음과 같이 출력
-    # (0, 500)
-    # (1, 600)
-    # (2, 150)
-    # (3, 800)
+import collections
+def solution(g, p):
+    s = collections.defaultdict(dict)
+    s_num = collections.defaultdict(int)
+    
+    for x,(idx,v) in zip(g, enumerate(p)):
+        s[x][idx] = v
+        s_num[x] += v 
+    # print(s) # {'classic': {0: 500, 2: 150, 3: 800}, 'pop': {1: 600, 4: 2500}}
+    # print(s_num) # {'classic': 1450, 'pop': 3100}
 
+    # 아래에서 v를 쓰냐 안쓰냐에 따라, x가 [('pop', 3100), ('classic', 1450)](v안쓸때) 되냐 ['pop', 'classic'](v쓸때) 가 된다
+    # 값(v)을 안쓰게되면, 통으로 객체로 리턴해버린다.
+    s_num = [x for x,v in sorted(s_num.items(), key=lambda x:x[1], reverse=True)]
 
-# def solution(g,p):
+    print(s_num)
+
+    re = []
+    for i in s_num : 
+        re.extend([x for x,v in sorted(s[i].items(), key=lambda x:x[1], reverse=True)][:2])
+    return re
+    
 
 
 genres = ["classic", "pop", "classic", "classic", "pop"]	
 plays = [500, 600, 150, 800, 2500]
 
-solution(genres, plays)
+print(solution(genres, plays))
