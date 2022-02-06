@@ -15,7 +15,6 @@
 # [95, 90, 99, 99, 80, 99]	[1, 1, 1, 1, 1, 1]	[1, 3, 2]   5일,10일,1일,1일,20일,1일
 
 import math
-import queue
 
 def solution(progress,speed):
 
@@ -24,7 +23,7 @@ def solution(progress,speed):
 
     q = []
     for i in range(len(progress)):
-        q.append(math.ceil((100 - progress[i]) / speed[i]))
+        q.append((100 - progress[i]) // speed[i])
 
     v = []
     left_m = 0
