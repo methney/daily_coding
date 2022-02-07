@@ -30,8 +30,7 @@ def solution(progress,speed):
     for i in q:
         left_m = max(i,left_m)
         if left_m > i : 
-            temp = v.pop()
-            v.append(temp + 1)
+            v.append(v.pop() + 1)
         else:
             v.append(1)
     return v
