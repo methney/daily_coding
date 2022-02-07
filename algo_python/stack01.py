@@ -24,7 +24,7 @@ def solution(progress,speed):
     q = []
     for i in range(len(progress)):
         q.append((100 - progress[i]) // speed[i])
-
+    print(q)
     v = []
     left_m = 0
     for i in q:
@@ -37,5 +37,11 @@ def solution(progress,speed):
 
 progress = [93, 30, 55]	
 speed = [1, 30, 5]
+
+progress = [95,90,99,99,80,99]
+speed = [1,1,1,1,1,1]
+
+progress = [94, 92, 90]
+speed = [1,1,1]
 
 print(solution(progress, speed))
