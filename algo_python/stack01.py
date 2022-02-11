@@ -21,27 +21,36 @@ def solution(progress,speed):
     # 첫번째 항목이 두번째 항목보다 걸리는 시간이 더 크다면, 다음항목은 첫번째에 value값으로 추가, 언제까지? 다음항목의 걸리는 시간이 더 클때까지 
     # 근데, 이게 스택,큐랑 무슨상관인가? 
 
+    # q = []
+    # for i in range(len(progress)):
+    #     q.append((100 - progress[i]) // speed[i])
+
+    # v = []
+    # left_m = 0
+    # for i in q:
+    #     left_m = max(i,left_m)
+    #     if left_m > i : 
+    #         v.append(v.pop() + 1)
+    #     else:
+    #         v.append(1)
+    # return v
+# ---------------------------------------
     q = []
+    last_top = 0
     for i in range(len(progress)):
-        q.append((100 - progress[i]) // speed[i])
+        top = (100 - progress[i]) // speed[i]
+        if top <= last_top : 
+            q.append(q.pop()+1)
+        else : 
+            q.append(1)
+        last_top = top
     print(q)
-    v = []
-    left_m = 0
-    for i in q:
-        left_m = max(i,left_m)
-        if left_m > i : 
-            v.append(v.pop() + 1)
-        else:
-            v.append(1)
-    return v
+    return q
 
 progress = [93, 30, 55]	
 speed = [1, 30, 5]
 
-progress = [95,90,99,99,80,99]
-speed = [1,1,1,1,1,1]
+progress = [95, 90, 99, 99, 80, 99]
+speed = [1, 1, 1, 1, 1, 1]
 
-progress = [94, 92, 90]
-speed = [1,1,1]
-
-print(solution(progress, speed))
+solution(progress, speed)
