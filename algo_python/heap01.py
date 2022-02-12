@@ -29,22 +29,23 @@ import heapq
 
 def solution(arr,k):
     arr.sort()
-    heapq.heapify(arr)
+    # heapq.heapify(arr)
 
     idx = 0
     ret_idx = 0
     while arr:
-        ret_idx += 1
         if arr[idx] <= k and len(arr) > 1: 
             first = heapq.heappop(arr)
             second = heapq.heappop(arr)
             heapq.heappush(arr, first+second*2)
+            ret_idx += 1
             idx = 0
             continue
         else:
             break
         idx += 1
-    return ret_idx - 1     
+    # return ret_idx
+    print(ret_idx)
 
 
 arr = [1,2,3,9,10,12]
