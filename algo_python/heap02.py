@@ -13,15 +13,23 @@
 
 import heapq
 def solution(jobs):
-    arr = []
-    for s,d in jobs:
-        heapq.heappush(arr,(d,s))
+    lenJ = len(jobs)
+    arr, answer = [],[]
+    jobs.sort()
+    heapq.heappush(arr,(jobs[0][1],0))
+    while arr:
+        d = heapq.heappop(arr)
+        jobs.pop(0)
+        idx = 0
+        last = 0
+        while last < d[0] + jobs[idx][1]:
+            heapq.heappush(arr,(d[0] + jobs[idx][1],d[1]))
+            last = d[0] + jobs[idx][1]
+            if idx < len(jobs)-1 :
+                idx += 1
+        print(arr)
+        # answer.append(d[1] - d[0])
+    print(answer)
 
-    aa = heapq.heappop(arr)
-    print(arr)
-    
-
-
-jobs = [[10, 3], [1, 9], [2, 6]]	
-
+jobs = [[0, 3], [1, 9], [2, 6]]	
 solution(jobs)
