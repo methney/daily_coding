@@ -33,9 +33,48 @@ def solution(jobs):
         # print('------------')
 
 # --------------------------------------------------
+    # lenJ = len(jobs)
+    # jobs.sort()
+    # arr,answer = [],[]
+    # heapq.heappush(arr,(jobs[0][1],0))
+    # jobs.pop(0)
 
-    
+    # while arr:
+    #     d = heapq.heappop(arr)
+    #     answer.append(d[0])
+    #     last = d[0]
+    #     while jobs:
+    #         job = jobs.pop(0)
+    #         print(last,'+',job[1])
+    #         heapq.heappush(arr, (last + job[1], job[0]))
+    #         last = job[1]
+    #         break
+    # # print(answer)
+    # hap = 0
+    # for a in answer:
+    #     hap += a
 
+    # print(hap//lenJ)
 
-jobs = [[0, 3], [1, 9], [2, 6]]	
+# -------------------------------------------- 
+
+    lenJ = len(jobs)
+    jobs.sort()
+    arr,answer = [],[]
+    j = jobs.pop(0)
+    heapq.heappush(arr,j + [j[1]])
+    cur = j[1]
+    while arr :
+        d = heapq.heappop(arr)
+        answer.append(d[1]-d[0])
+        while jobs:
+            job = jobs.pop(0)
+            # if last > d[0]: # 3 > 0
+            heapq.heappush(arr, job + [cur])
+            cur = job[1]
+        print(arr)
+
+    # print(answer)
+
+jobs = [[0, 3], [2,6], [1, 9]]	
 solution(jobs)
