@@ -61,22 +61,25 @@ def solution(jobs):
     jobs.sort()
     arr,answer = [],[]
     j = jobs.pop(0)
-    heapq.heappush(arr, (j[1], j[0]))
-    cur = j[1]
+    heapq.heappush(arr, (j[1]-j[0], j[0], j[1]))
+    cur, tmp = 0, 0
     while arr :
         d = heapq.heappop(arr)
-        # print(d[0], d[1], cur)
-        answer.append(d[0]-d[1])
-        cur = d[0] + cur
-        print(cur)
+        if d[1] < cur: #겹쳐있어서 우선적으로 처리하고 나머지 것들은 뒤로 밀릴때
+            tmp = cur + d[2] - d[1]
+        else : # 이상일때(같을때포함)
+            tmp = d[2]
+        answer.append(tmp)
+        cur += d[2]
         while jobs:
             job = jobs.pop(0)
-            # if last > d[0]: # 3 > 0
             # It will be wrong when put the data into heapq
             # because it will be organized after putting this like that(part of 'cur') ->> heapq.heappush(arr, (job[1], job[0], job[1] + cur))
             # so the way putting this is just simple!!
-            heapq.heappush(arr, (job[1], job[0]))
-        # print(arr)
-
-jobs = [[0, 3], [2,6], [1, 9]]	
-solution(jobs)
+            heapq.heappush(arr, ((job[0] + job[1])-job[0], job[0], job[1]))
+    print(answer)
+    return int(sum(answer)//lenJ)
+# jobs = [[0, 3], [2,6], [1, 9]]	
+jobs = [[0, 5], [2, 10], [10000, 2]] # 6
+# jobs = [[24, 10], [28, 39], [43, 20], [37, 5], [47, 22], [20, 47], [15, 34], [15, 2], [35, 43], [26, 1]]  # 72
+print(solution(jobs))
