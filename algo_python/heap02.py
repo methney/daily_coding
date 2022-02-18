@@ -55,26 +55,28 @@ def solution(jobs):
     #     hap += a
 
     # print(hap//lenJ)
-
 # -------------------------------------------- 
 
     lenJ = len(jobs)
     jobs.sort()
     arr,answer = [],[]
     j = jobs.pop(0)
-    heapq.heappush(arr,j + [j[1]])
+    heapq.heappush(arr, (j[1], j[0]))
     cur = j[1]
     while arr :
         d = heapq.heappop(arr)
-        answer.append(d[1]-d[0])
+        # print(d[0], d[1], cur)
+        answer.append(d[0]-d[1])
+        cur = d[0] + cur
+        print(cur)
         while jobs:
             job = jobs.pop(0)
             # if last > d[0]: # 3 > 0
-            heapq.heappush(arr, job + [cur])
-            cur = job[1]
-        print(arr)
-
-    # print(answer)
+            # It will be wrong when put the data into heapq
+            # because it will be organized after putting this like that(part of 'cur') ->> heapq.heappush(arr, (job[1], job[0], job[1] + cur))
+            # so the way putting this is just simple!!
+            heapq.heappush(arr, (job[1], job[0]))
+        # print(arr)
 
 jobs = [[0, 3], [2,6], [1, 9]]	
 solution(jobs)
