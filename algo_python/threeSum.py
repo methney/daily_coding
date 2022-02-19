@@ -53,7 +53,7 @@ def threeSum(nums:List[int])->List[List[int]]:
                 result.append([nums[i], nums[left], nums[right]])
 
                 while left < right and nums[left] == nums[left+1]:
-                    left += 1
+                    left += 1 # 이뤄질수없는 조건은 빨리 넘어가도록 처리
                 while left < right and nums[right] == nums[right-1]:
                     right -= 1
                 left += 1
