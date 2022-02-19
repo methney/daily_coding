@@ -130,35 +130,36 @@ def solution(jobs):
     cur, tmp = 0, 0
     j = jobs.pop(0)
     heapq.heappush(arr, (cur+j[1]-j[0], j[0], j[1])) 
-
-    cur = j[1]
     while arr :
         # 하나 빼서 적용하고 아래의 while안에서 다시 다음 후보를 채워넣는다.
         # 그럼 이전에 아래 whle안에서 후보군으로 여러개의 값이 arr에 채워졌을텐데.. 그걸 다시 비워야하는거아닌가? 
         # answer에 최종값을 넣고나서 arr를 비우고 다시 시작해야겠네...
         d = heapq.heappop(arr) 
+        # 근데, 이걸 위해서 pop된 것들 중에 [1,9] [2,6] 중에..사용되지 않은 [2,6]의 우선순위는..
+        # 그 다음번에는 의미가 없는 숫자일텐데.. 아님 그 우선순위가 의미가 있나? 
         answer.append(d[0])
+        if len(arr)!=0:
+            jobs = list(map(lambda x: (x[1],x[2]), arr))
+        # [x for x,v in sorted(s_num.items(), key=lambda x:x[1], reverse=True)]
         # -> 여기서 arr이 싹다 비우는걸 하나 만들어라!
         arr = []
         while True:
             if len(jobs) == 0 :
                 break
             job = jobs.pop(0)
-            print(cur,'>',job[0])
-            if cur > job[0]:
-                heapq.heappush(arr, (cur+job[1]-job[0], job[0], job[1]))
-                print(arr)
+            if cur + d[2] > job[0]:
+                heapq.heappush(arr, (cur+d[2]+job[1]-job[0], job[0], job[1]))
                 continue
             else : 
                 # 이전테스크에 상관없이 실행이 가능한 것들은 그냥 등록한다? 
-                # 이번엔 그렇지만, 다른테스크에서 걸릴수도 있잖아? 
-                jobs.append(job)
+                # 이번엔 그렇지만, 다른테스크에서 걸릴수도 있잖아?  > jobs를 소팅할때 
+                # jobs.append(job)
+                heapq.heappush(arr, (0, job[0], job[1]))
                 break # jobs가 sort가 되있기에 가능하다.
-
-        cur += j[1]
+        cur = d[2]
     return sum(answer)//lenJ
 
-jobs = [[0, 3], [2,6], [1, 9]]	
+jobs = [[0, 3], [2,6], [1, 9]]	# 9
 # jobs = [[0, 5], [2, 10], [10000, 2]] # 6
 # jobs = [[24, 10], [28, 39], [43, 20], [37, 5], [47, 22], [20, 47], [15, 34], [15, 2], [35, 43], [26, 1]]  # 72
 print(solution(jobs))
