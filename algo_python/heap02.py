@@ -76,10 +76,42 @@ def solution(jobs):
             # It will be wrong when put the data into heapq
             # because it will be organized after putting this like that(part of 'cur') ->> heapq.heappush(arr, (job[1], job[0], job[1] + cur))
             # so the way putting this is just simple!!
-            heapq.heappush(arr, ((job[0] + job[1])-job[0], job[0], job[1]))
+            # 근데 데이터를 큐에 넣을때에 첫번째 태스크가 끝나기전에 시작하는 케이스와 일반 케이스를 어떻게 구분하느냐는거지 > 나올때가능한가?(pop할때)
+            heapq.heappush(arr, (job[1], job[0]))
     print(answer)
     return int(sum(answer)//lenJ)
-# jobs = [[0, 3], [2,6], [1, 9]]	
-jobs = [[0, 5], [2, 10], [10000, 2]] # 6
+
+
+# -------------------------------------
+    # 첫번째를 제외한 2개가 모두 첫번째 작업이 끝나기전에 시작하는 케이스에서
+    # 우선순위를 정해야 하는 케이스를 처리애야함(다시 우선순위로 찾아보자)
+
+    # from collections import deque
+    # lenJ = len(jobs)
+    # jobs.sort()
+    # arr,answer = deque(),[]
+    # j = jobs.pop(0)
+    # arr.append((j[0],j[1]))
+    # cur, tmp = 0,0
+    # while arr:
+    #     d = arr.popleft()
+    #     print(d, cur)
+    #     if d[0] < cur :
+    #         tmp = cur + d[1] - d[0]
+    #     else : 
+    #         tmp = d[1]
+    #     answer.append(tmp)
+    #     while jobs:
+    #         job = jobs.pop(0)
+    #         if job[0] < cur:
+    #             arr.appendleft((job[0],job[1]))
+    #         else :
+    #             arr.append((job[0],job[1]))
+    #     cur += d[1]
+    # print(answer)
+
+
+jobs = [[0, 3], [2,6], [1, 9]]	
+# jobs = [[0, 5], [2, 10], [10000, 2]] # 6
 # jobs = [[24, 10], [28, 39], [43, 20], [37, 5], [47, 22], [20, 47], [15, 34], [15, 2], [35, 43], [26, 1]]  # 72
 print(solution(jobs))
