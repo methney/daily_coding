@@ -16,8 +16,21 @@ def twoSum(nums:List[int], target:int) -> List[int]:
     for i,n in enumerate(nums):
         complement = target - n
 
+
+        # if complement in nums:
+        #     ret.append([i, nums.index(complement)])
+        #     # [0, 3], [1, 2], [2, 1], [3, 0]]
+
+        # 중복을 피하기 위한 방법
+        # if complement in nums[i+1:]:
+        #     # ret.append([nums.index(n), nums[i+1:].index(complement) + (i+1)])
+        #     ret.append([i,nums[i+1:].index(complement)+(i+1)])
+
+        # 이런방법도 있겠다 (조건식에 nums[i+1:]으로 변경하여 조건만 줄였다.)
         if complement in nums[i+1:]:
-            ret.append([nums.index(n), nums[i+1:].index(complement) + (i+1)])
+            ret.append([i, nums.index(complement)])
+        
+
 
 twoSum(nums,target)
 print(ret)
