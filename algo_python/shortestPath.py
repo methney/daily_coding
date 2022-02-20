@@ -30,6 +30,20 @@ def createMaze2():
 
     return maze
 
+def createMaze3():
+    maze = []
+    maze.append(["#","#", "#", "#", "#", "O", "#", "#", "#"])
+    maze.append(["#"," ", " ", " ", " ", " ", " ", " ", "#"])
+    maze.append(["#"," ", "#", "#", "#", "#", "#", "#", "#"])
+    maze.append(["#"," ", "#", " ", " ", " ", "#", " ", "#"])
+    maze.append(["#"," ", "#", " ", "#", " ", "#", " ", "#"])
+    maze.append(["#"," ", "#", " ", "#", " ", "#", " ", "#"])
+    maze.append(["#"," ", "#", " ", "#", " ", "#", " ", "#"])
+    maze.append(["#"," ", " ", " ", " ", " ", " ", " ", "#"])
+    maze.append(["#","#", "#", "#", "#", "#", "#", "X", "#"])
+
+    return maze
+
 
 def printMaze(maze, path=""):
     for x, pos in enumerate(maze[0]):
@@ -114,7 +128,6 @@ def findEnd(maze, moves):
             j += 1
 
     if maze[j][i] == "X":
-        print("Found: " + moves)
         printMaze(maze, moves)
         return True
 
@@ -125,18 +138,21 @@ def findEnd(maze, moves):
 # 큐는 그냥 하나의 스트링이다. 별거없다.
 nums = queue.Queue()
 nums.put("")
-# print('--',nums)
 add = ""
 maze  = createMaze2()
-
+idx = 0
 # will next row and column is valid in maze then keep going
 while not findEnd(maze, add): 
+    idx += 1
+    if idx == 100:
+        break
     # 원래는 nums.get()을 여러번실행하면 queue에 담긴값이 FIFO로 넣은순서대로 나오게 되어있다.
     # https://www.geeksforgeeks.org/queue-in-python/
     # 여기서는 한번만실행했는데, 이유는 그냥 하나에다가 몰빵해서..이럴꺼면 queue를 왜써? 
-    
     add = nums.get()
-    # print('---', add)
+    print(add, '---------')
+
+    # 그냥 자유의지로 갈수 있는 한 칸을 임의로 loop를 돈다.
     for j in ["L", "R", "U", "D"]:
         # 몇번을 사용해야 다나오게 할지 모르므로,,그냥 이경우엔 하나의 String으로 처리를 한것 같다.  
         # 결국, 이 케이스에서는 string이나 queue나 다를게 없는거지...
@@ -146,7 +162,9 @@ while not findEnd(maze, add):
         # 이번에 추가된 경로가 valid 한거냐? 
         # put이 아마도 RRDDLU 뭐 이런식으로 될꺼야...
         if valid(maze, put):
+            # 이번에는 valid한데, 다음에는 아니면?
             nums.put(put)
+        
 
 
 
