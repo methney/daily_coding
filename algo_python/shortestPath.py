@@ -38,7 +38,10 @@ def printMaze(maze, path=""):
 
     i = start
     j = 0
+
+    # set은 순서가없다. 중복된값은 제거
     pos = set()
+    
     for move in path:
         print('move:',move)
         if move == "L":
@@ -84,6 +87,7 @@ def valid(maze, moves):
         elif move == "D":
             j += 1
 
+        # 범위안에 들었는지만 확인(아예 findEnd할때 한번에 못하나?)
         if not(0 <= i < len(maze[0]) and 0 <= j < len(maze)):
             return False
         elif (maze[j][i] == "#"):
@@ -129,7 +133,10 @@ nums.put("")
 add = ""
 maze  = createMaze2()
 
-# will next row and column is valid in maze then keep going
+# 어떻게 이런생각으로 풀게 되었는지가 가장중요하다.
+# 이렇게 while조건식에 함수를 사용하는 경우 어떤경우인가? 
+# 그냥 단순하게 그 목적만을 일단 생각하자! findEnd니깐.. 추가된 add가 마지막좌표 X 인지만 확인해서 리턴(True,False)
+# 원래 while문에서는 큐,힙에서 실제로 pop을하지않아, 그냥 배열값을 지정하여([i][j]등으로) 값만확인.
 while not findEnd(maze, add): 
     # 원래는 nums.get()을 여러번실행하면 queue에 담긴값이 FIFO로 넣은순서대로 나오게 되어있다.
     # https://www.geeksforgeeks.org/queue-in-python/
@@ -138,7 +145,7 @@ while not findEnd(maze, add):
     add = nums.get()
     # print('---', add)
     for j in ["L", "R", "U", "D"]:
-        # 몇번을 사용해야 다나오게 할지 모르므로,,그냥 이경우엔 하나의 String으로 처리를 한것 같다.  
+        # 몇번을 사용해야 다나오게 할지 모르므로,,그냥 이경우엔 하나의 String으로 처리를 한것 같다.(이중배열아닌 단일값이니..가능한것이기도하고)  
         # 결국, 이 케이스에서는 string이나 queue나 다를게 없는거지...
         # 또한 넣을때에 새로넣을값을 앞에넣냐 뒤에넣냐에 따라 값이 달라지게되니..조심(경우에따라 사용하면된다.)
         # basicQueue.py 참고 
@@ -148,6 +155,7 @@ while not findEnd(maze, add):
         if valid(maze, put):
             nums.put(put)
 
+print(nums.get())
 
 
 
