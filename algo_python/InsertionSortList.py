@@ -28,7 +28,26 @@ class Solution:
             
             # 두번째 -----------------------------------
             # 4 < 2 이어서 두번째 while비실행
-            # 
+            # cur.next = head, None-(2-1-3)-4 (cur)
+            # head.next = cur.next, (2-1-3)(cur.next)
+            # cur(None-2-4), head(2-1-3)
+            # head = head.next, head(1-3) 
+
+            # 세번째 -----------------------------------
+            # 2 < 1
+            # cur.next = head, None-(1-3)-2-4 (cur)
+            # head.next = cur.next, (1-3)(cur.next)
+            # cur(None-1-2-4), head(1-3)
+            # head = head.next, head(3)
+
+            # 네번째 -----------------------------------
+            # 1 < 3 
+            # cur = cur.next
+
+
+            self.getList(cur)
+            print('------')
+
 
             # cur를 다시 맨처음 None으로 초기화
             cur = parent
@@ -44,4 +63,4 @@ class Solution:
 
 aa = Solution()
 bb = aa.insertionSortList(ListNode(4,ListNode(2,ListNode(1,ListNode(3)))))
-aa.getList(bb)
+# aa.getList(bb)
