@@ -1,5 +1,6 @@
 # 로무토파티션이란? 제일오른쪽을 그냥 파티션으로 잡고 시작하는 방법
 # 퀵소트가 되려 머지소트보다 코드는 간단하다.
+# 평균 nlogn, 최악n^2
 arr = [5, 4, 7, 8, 2, 6, 1, 3]
 
 
@@ -15,8 +16,8 @@ def quickSort(arr):
 
     if len(arr) <=1 :
         return arr
-    # 피벗은 '값'이다.  
-    pivot = arr[len(arr)//2]
+    # 피벗은 '값'이다(배열 중간에 있는 값)
+    pivot = arr[len(arr)//2] 
 
     arr_low, arr_high, arr_mid  = [], [], []
     for num in arr:
@@ -28,9 +29,10 @@ def quickSort(arr):
             arr_mid.append(num)
 
     return quickSort(arr_low) + arr_mid + quickSort(arr_high)
+    # 꼭 머지소트같다.
 
 arr = quickSort(arr)
-printf(arr)
+print(arr)
 
 
 

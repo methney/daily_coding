@@ -1,4 +1,6 @@
 
+# 시간복잡도 n^2
+
 
 def insertionSort(arr):
     for i in range(1, len(arr)):
@@ -16,7 +18,7 @@ def insertionSort(arr):
         getList(arr)
         # 바로아래 이건왜? for문끝나가는마당에...(빼도영향을 미치지않아..)
         # 만약에 while문이 실행된만큼 j가 줄어들었을텐데..
-        # arr[j+1] = key
+        arr[j+1] = key
 
 def getList(a:list):
     for i in a:
