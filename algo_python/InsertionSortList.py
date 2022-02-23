@@ -35,23 +35,23 @@ class Solution:
 
             # 세번째 -----------------------------------
             # 2 < 1
-            # cur.next = head, None-(1-3)-2-4 (cur)
+            # cur.next = head, cur(None-(1-3)-2-4)
             # head.next = cur.next, (1-3)(cur.next)
             # cur(None-1-2-4), head(1-3)
             # head = head.next, head(3)
 
             # 네번째 -----------------------------------
-            # 1 < 3 
-            # cur = cur.next
-
-
-            self.getList(cur)
-            print('------')
-
+            # 1 < 3 , 두번째 while실행, cur = cur.next, cur(1-2-4), haed(3)
+            # 2 < 3 , 두번째 while재실행, cur = cur.next, cur(2-4), head(3)
+            # cur.next = head, cur(2-(3)-4)
+            # head.next = cur.next, 3 (cur.next)
+            # cur(2-3-4), head(3)
+            # head = head.next (이건 없고..)
 
             # cur를 다시 맨처음 None으로 초기화
             cur = parent
 
+        # print(self.getList(cur.next))
         return cur.next
     
     def getList(self,l:ListNode):
@@ -63,4 +63,4 @@ class Solution:
 
 aa = Solution()
 bb = aa.insertionSortList(ListNode(4,ListNode(2,ListNode(1,ListNode(3)))))
-# aa.getList(bb)
+aa.getList(bb)
