@@ -50,6 +50,7 @@ def mergeSort(arr):
     mid = len(arr)//2 #position
 
     # 아래 dp으로 작성을 생각하지 못했다. 
+    # 일단 이 부분에서 recursive하게 쪼갠다.(하나될때까지..)
     arr_lower = mergeSort(arr[:mid])
     arr_high = mergeSort(arr[mid:]) # 여기를 :mid 로 실수했다. 
 
@@ -58,6 +59,7 @@ def mergeSort(arr):
 
     # 여기를 돌면서, 쪼갠 배열을 머지한다.
     # 여기서는 비교하는 둘중에 작은것을 먼저 arr_merge 배열에 담는다. 5 < 4 
+    # 이 조건이 이해가 잘안된다(바뀌는 것은 l,h)
     while l < len(arr_lower) and h < len(arr_high) :
         # print('compare:',arr_lower[l],arr_high[h],'/', arr_lower, arr_high, arr_merge)
         if arr_lower[l] < arr_high[h]:

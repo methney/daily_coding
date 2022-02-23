@@ -20,10 +20,10 @@ c = re.search(pattern, string_three)
 
 
 # capturing group
-pattern2 = '(?:https?:\/\/)?(\w+)\.github.com'
+pattern2 = '(?:https?:\/\/)?(\w+)\.github.com'  # ?:문자열은 캡처링 그룹에 포함시키지 않는다.(non캡처링그룹으로 지정)
 d= re.match(pattern2, 'https://rhostem.github.com')
 # match나 search나 똑같이 결과는 나오는것 같다. 
-# print(d.group(1)) # rhostem
+print(d.group(1)) # rhostem
 
 # lookbehind
 # ?<= 로 시작하는 문자열을 찾는다(https). ?<=의 문자열은 캡처링그룹에 포함시키지않는다.
