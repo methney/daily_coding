@@ -1,4 +1,6 @@
 
+# 시간복잡도 n^2
+
 
 def insertionSort(arr):
     for i in range(1, len(arr)):
