@@ -35,22 +35,40 @@ def solution(progress,speed):
     #         v.append(1)
     # return v
 # ---------------------------------------
+    
+    # q = []
+    # last_top = 0
+    # for i in range(len(progress)):
+    #     top = (100 - progress[i]) // speed[i]
+    #     if top <= last_top : 
+    #         q.append(q.pop()+1)
+    #     else : 
+    #         q.append(1)
+    #     last_top = top
+    # return q
+
+# ---------------------------------------
+
     q = []
     last_top = 0
     for i in range(len(progress)):
-        top = (100 - progress[i]) // speed[i]
+        top = math.ceil((100 - progress[i]) / speed[i])
+        print(top)
         if top <= last_top : 
             q.append(q.pop()+1)
         else : 
             q.append(1)
-        last_top = top
+        last_top = max(top,last_top)
     print(q)
     return q
 
+
 progress = [93, 30, 55]	
 speed = [1, 30, 5]
+# [2,1]
 
-progress = [95, 90, 99, 99, 80, 99]
-speed = [1, 1, 1, 1, 1, 1]
+# progress = [95, 90, 99, 99, 80, 99]
+# speed = [1, 1, 1, 1, 1, 1]
+# [1,3,2]
 
 solution(progress, speed)
