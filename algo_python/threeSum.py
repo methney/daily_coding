@@ -1,6 +1,13 @@
 from typing import ContextManager, List
 
 
+# -------- 배열조작 --------------
+# 
+# result.append([i, j]) 처럼 배열을 담을수도 있다.
+# 
+# ------------------------------
+
+
 
 nums = [-1,0,1,2,-1,-4]
 

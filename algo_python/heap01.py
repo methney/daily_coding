@@ -25,6 +25,16 @@
 # s_num = [x for x,v in sorted(s_num.items(), key=lambda x:x[1], reverse=True)]
 # 힙은 최소힙만 지원한다. 따라서, 최대값은 -를 적용해서 처리해야한다. 
 
+
+
+# -------------- loop ---------------------------------
+# 
+#  continue : 다음인덱스로 넘어감
+#  break : loop문 중단
+# 
+# -----------------------------------------------------
+
+
 import heapq
 
 def solution(arr,k):
@@ -44,11 +54,10 @@ def solution(arr,k):
         else:
             break
         idx += 1
-    # return ret_idx
-    print(ret_idx)
+    return ret_idx
 
 
 arr = [1,2,3,9,10,12]
 k = 7
-solution(arr,k)
+print(solution(arr,k))
 

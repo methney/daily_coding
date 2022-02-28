@@ -11,6 +11,7 @@ class TreeNode:
 class Solution:
     def invertTree(self, root: TreeNode) -> TreeNode:
         stack = collections.deque([root])
+        print(stack)
         #  TreeNode로 할경우, stack은 루트인 4, 하나만 세팅된다. 
         while stack:
             # print('--',len(stack))

@@ -11,6 +11,16 @@
 # 각 전화번호의 길이는 1 이상 20 이하입니다.
 # 같은 전화번호가 중복해서 들어있지 않습니다.
 
+
+
+# ------------ 문자열 비교문제는 일단 sort하고 시작 ---------------
+# 
+# sort하고나면, 버블소트처럼 바로 같은 문자가 뒷단에 또 나오는 경우를 고민하지 않아도됨
+# 바로 옆에하고만 비교하는 것으로 처리
+# 
+# ---------------------------------------------
+
+
 # import re 
 def solution(phone_book):
     # newList = []
@@ -58,7 +68,7 @@ def solution(phone_book):
     # phone_book.sort()
     # book_len = len(phone_book)
     # for i in range(book_len):
-    #     if i+1 >= book_len:
+    #     if i+1 >= book_len: # 이게 뭐야? 이건 그냥 book_len이 1이란 얘기밖에 안되잖아? 
     #         break
 
     #     if len(phone_book[i+1]) > len(phone_book[i]) :

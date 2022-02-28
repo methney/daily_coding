@@ -40,12 +40,33 @@
 #     print(answer) # [4,1,3,0]
 #     return answer
 
-# ---------------------------------
+
+# ------------ nested dict --------------------------------
+# 
+# 내부에 또 다른 hash형태를 담은 경우(nest) 선언을 아래와 같이..
+# collections.defaultdict(dict)
+# 
+# int 전용으로 사용할 경우에는 
+# collections.defaultdict(int) 
+# s_num = {}, s_num = dict() 이렇게 하면 에러발생(keyError)
+#
+# defaultdict과 dict과의 차이점은 (초기값 처리에 대한 유무차이)
+# 
+# -------------- zip 모줄 ---------------------------------
+# 
+#  for x,(idx,v) in zip(g, enumerate(p)) 아주 생소하다.
+#  키와 값이 분산된 배열을 키 기준으로 모아준다.
+#  아래참고 
+# 
+# ---------------------------------------------------------
 
 import collections
 def solution(g, p):
     s = collections.defaultdict(dict)
     s_num = collections.defaultdict(int)
+    
+    # keyError가 나는 이유는 초기화가 없이 사용하기 때문(없는키를 참조) s_num[x] += v에서 이전값을 참조하기 위해 s_num[x]를 먼저찾기 때문
+    # s_num = dict() 
     
     for x,(idx,v) in zip(g, enumerate(p)):
         s[x][idx] = v
@@ -57,11 +78,9 @@ def solution(g, p):
     # 값(v)을 안쓰게되면, 통으로 객체로 리턴해버린다.
     s_num = [x for x,v in sorted(s_num.items(), key=lambda x:x[1], reverse=True)]
 
-    print(s_num)
-
     re = []
     for i in s_num : 
-        re.extend([x for x,v in sorted(s[i].items(), key=lambda x:x[1], reverse=True)][:2])
+        re.extend([x for x,v in sorted(s[i].items(), key=lambda x:x[1], reverse=True)][:2]) # 장르별로 2개씩만 모아...
     return re
     
 

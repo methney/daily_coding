@@ -13,6 +13,23 @@
 # ["marina", "josipa", "nikola", "vinko", "filipa"]	["josipa", "filipa", "marina", "nikola"]	"vinko"
 # ["mislav", "stanko", "mislav", "ana"]	["stanko", "ana", "mislav"]	"mislav"
 
+
+# ------------ dictionary, list ---------------
+# 
+# key가 'p'인 값을 구하는 방법 d.get('p') 
+# 'z'가 없을때, 초기값설정 0으로 하면 d.get('z',0) 
+# 
+# [x for x in d if d[x]>0] 이렇게 간단하게 필터링 map함수를 안써도 된다.
+# 
+# ---------------------------------------------
+
+# ------------ 쌍이 있는 경우는 stack으로 처리 ---------------
+# 
+# valid parenthesis 
+# 쌍이 아닌 경우, 하단과 같이 그냥 dict 과 d.get('p',0)+1 로 처리(개수를 세는 경우)
+# 
+# ---------------------------------------------
+
 import copy
 import collections
 
@@ -25,7 +42,8 @@ def solution(participant, completion):
 
     # list 선언은 d=dict() 
     # 리스트이름의 값을 구하는 방법 d.get(p) 인데, 초기값설정 0으로 하면 d.get(p,0)
-    d = dict()
+    d = {}
+    # d = dict() 동일하다.
     for p in participant:
         d[p] = d.get(p,0)+1
     for c in completion:
@@ -45,4 +63,4 @@ def solution(participant, completion):
 participant = ["mislav", "stanko", "mislav", "ana"]
 completion = ["stanko", "ana", "mislav"]
 
-solution(participant, completion)
+print(solution(participant, completion))
