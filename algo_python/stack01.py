@@ -58,6 +58,7 @@ def solution(progress,speed):
             q.append(q.pop()+1)
         else : 
             q.append(1)
+        # 이거하나만 더 신경썼으면...
         last_top = max(top,last_top)
     print(q)
     return q
