@@ -12,11 +12,20 @@ str = "BABABD"
 #        expand(3,5) >> s[3]==s[5]???? 이게 말이되나? s[5]는 없는데? 
 #        >> 에러가 나는게 맞고, 하지만 while 문안에서 right<len(s)에서 이미 해당부분이 짤리게되어 에러가 안나는거다.
 
+
+# -------------- loop ---------------------------------
+# 
+#  arr[::-1] 완전히 뒤짚기 [5,4,3,2,1]
+# 
+# -----------------------------------------------------
+
+
 class Solution() : 
     def longestPalindrome(self, s:str):
         def expand(left:int, right:int):
             while left >=0 and right < len(s) and s[left]==s[right]:
                 # 이부분이 이해가 안간다. 보통의 투포인터는 left+=1, right-=1 로 진행하는데말이지..
+                # 이건 거꾸로 하나씩 확장해나간다.
                 left -= 1
                 right += 1
             
@@ -42,4 +51,6 @@ class Solution() :
 
 aa = Solution()
 print(aa.longestPalindrome(str))
+
+
 
