@@ -1,16 +1,15 @@
 
-from collections import deque
-
 import collections
+
+
+# 1. 좀 확인을 해보자면, 배열자체가 변경이 되면서 확장이 되는지.. 
+#       , 마지막값만 수정하면 되는가? >> loop마지막에 이전값을 저장
+#       , 이전값들을 이용하며 확장되나? >> 
+#       , 최대값이 갱신되는 것인가? >> max() 사용하며갱신
+# 2. 리턴배열을 준비해야하는지 확인하는게 중요.
 def solution(arr:list):
-    # arr = collections.deque(ops)
     newArr = []    
-    retArr = []
-    # 현재를 돌면서, 이전 2개를 확인해야하니깐..-2까지 봐야겠다.
     for i in range(len(arr)):
-        start = i-2 if i-2 >= 0 else 0
-        # print('i:', arr[i], arr[:i-1], arr[start:i])
-        sArr = []
         if arr[i] not in ['C','D','+']:
             # 숫자라서 배열에 넣음 
             newArr.append(int(arr[i]))
@@ -33,7 +32,7 @@ def solution(arr:list):
     print(sum(newArr))
 
 arr = ["5","2","C","D","+"] # 30
-arr = ["5","-2","4","C","D","9","+","+"]
+arr = ["5","-2","4","C","D","9","+","+"] # 27
 solution(arr)
 
 
