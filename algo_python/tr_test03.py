@@ -18,3 +18,6 @@ def solution(arr):
 
 arr = [1,1,2,3,3]
 print(solution(arr))
+
+arr = [0]
+print([int(x) for x in arr])

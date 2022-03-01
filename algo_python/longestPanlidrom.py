@@ -19,7 +19,6 @@ str = "BABABD"
 # 
 # -----------------------------------------------------
 
-
 class Solution() : 
     def longestPalindrome(self, s:str):
         def expand(left:int, right:int):
@@ -28,8 +27,6 @@ class Solution() :
                 # 이건 거꾸로 하나씩 확장해나간다.
                 left -= 1
                 right += 1
-            
-            print(left,right,s[left+1:right])
             return s[left+1:right]
         
         if len(s) < 2 or s == s[::-1]:
@@ -41,11 +38,11 @@ class Solution() :
         # expand(i,i+2)는 string길이상으로는 에러가 나야하는데.. 나지않는다. >> 위에서 설명 
         # expand(i,i+1)와 expand(i,i+2)가 짝홀수개념으로 늘려가면서 테스트를하게된다. 이것도 외우지 않으면 생각하기 어려운부분이다.
         for i in range(len(s)-1):
+            print(result,'/',expand(i,i+1),'/',expand(i,i+2))
             result = max(result,
                             expand(i, i+1),
                             expand(i, i+2),
-                            key=len
-                )
+                            key=len)
         
         return result
 
