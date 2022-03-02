@@ -1,7 +1,15 @@
-# -*- coding: utf-8 -*-
-# UTF-8 encoding when using korean
-# user_input = input()
-# print ("Hello Goorm! Your input is " + user_input)
+
+# n개의 줄을 입력 받으려면 아래처럼 하면 된다============================================
+# 
+# import sys
+# n = int(sys.stdin.readline())
+# data = [sys.stdin.readline().strip() for i in range(2)]
+# print(n)
+# print(data)
+# 
+# ============================================================================
+
+
 import math
 
 d = dict()
