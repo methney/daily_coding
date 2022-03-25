@@ -14,6 +14,15 @@
 # [93, 30, 55]	[1, 30, 5]	[2, 1]     7일,3일,9일 
 # [95, 90, 99, 99, 80, 99]	[1, 1, 1, 1, 1, 1]	[1, 3, 2]   5일,10일,1일,1일,20일,1일
 
+
+# ------------- loop에서 지난루프의 값 --------------
+# 
+# for i in arr:
+#   ...
+#   last_top = max(top,last_top) 로 loop의 마지막에 이와같이 처리하므로서, 다음번 i+1차에서 i차의 값을 이용(지난번차수까지의 max도 기록가능)
+# 
+# ----------------------------------------------
+
 import math
 
 def solution(progress,speed):
@@ -58,7 +67,7 @@ def solution(progress,speed):
             q.append(q.pop()+1)
         else : 
             q.append(1)
-        # 이거하나만 더 신경썼으면...
+        # 이전의 최대값으로 저장
         last_top = max(top,last_top)
     print(q)
     return q

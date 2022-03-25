@@ -27,21 +27,12 @@
 import collections
 
 def knapsack(str):
-    print(str)
     list_str = str.rstrip('\r\n').split()
     list_obj = map(int,list_str)
     cargo = list(list_obj)
 
     cnt_child = cargo[0]
     cnt_present = cargo[1]
-
-    if cnt_child < 1 or cnt_child > 100000:
-        return 'NO'
-    if cnt_present < 1 or cnt_present > 100000:
-        return 'NO'
-
-    if cargo[0] > cargo[1]:
-        return 'NO'
 
     arr_sack = []
     arr_present = []

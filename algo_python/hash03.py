@@ -21,28 +21,41 @@
 #     return len(list(product(*clothes))) -1
 
 # clothes = [["yellowhat", "headgear"], ["bluesunglasses", "eyewear"], ["green_turban", "headgear"]]
-
 # solution(clothes)
 
+# ------------ dict 에서 값만으로 loop ---------------
+# 
+# arr이 dict 형태인데,
+# for i in arr.values(): 로 값만으로 배열을 돌릴수 있다. (근데 구지 필요한지는 모르겠다.)
+# 
+# dict 초기화
+# arr.setdefault(i[1],[i[0]]) 구지 이렇게 안해도 되긴해..
+# 
+# ---------------------------------------------------------
 
 def solution(clothes):
     arr = dict()
     for i in clothes:
-        if i[1] in arr:
-            print(arr, '/', i[1],'/',i[0])
-            arr[i[1]].append(i[0])
+        if i[1] in arr: 
+            arr[i[1]].append(i[0]) # 종류별로 아이템을 담음(종류가 이미 등록되었다면)
         else :
-            arr.setdefault(i[1],[i[0]])
+            arr.setdefault(i[1],[i[0]]) # 새로운종류와 아이템을 담음(이게 안되면 exception 처리를 해줘야한다. defaultdict과 dict차이)
+    
+    # 새로운 배열선언(아이템 개수등록) 
     v = []
     for i in arr.values():
         v.append(len(i)+1)
+    
+    # 경우의 수 계산을 위해서
     s = 1
     for i in v:
         s *= i
+    
+    # 다 벗은경우는 없는 1건은 뺌
     s -= 1
     return s
             
-            
+# [아이템,종류] 
 clothes = [["yellowhat", "headgear"], ["bluesunglasses", "eyewear"], ["green_turban", "headgear"]]
 
 print(solution(clothes))
