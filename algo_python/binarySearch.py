@@ -1,6 +1,9 @@
 from bisect import bisect_left, bisect_right
 from typing import List
 
+# ---------------------------------------------------------------
+# 값에 상관없이 중간 idx값을 구하고 처음과 끝에서 그 값과 비교
+# --------------------------------------------------------------
 
 def search(nums:List[int], target:int) -> int:
 
