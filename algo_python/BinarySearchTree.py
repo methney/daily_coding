@@ -15,7 +15,7 @@ def printVal(obj):
     if obj.root is not None:
         _printVal(obj.root)
 
-# 여기서 left를 먼저출력하도록 했기때문에 BST형식대로 출력된다.
+# 여기서 root,left,right의 순서로 출력하도록 했기때문에 BST형식대로 출력된다.
 def _printVal(node):
     if node.data is not None:
         print(node.data)
