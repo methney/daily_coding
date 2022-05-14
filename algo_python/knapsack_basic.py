@@ -42,8 +42,12 @@ def solution(price,n):
     max_value = 0
     for j in range(1,n+1):
         for i in range(j):
-            print(j,'.',i,'//',max_value, '/' , price[j-i], '+', max_values[i])
-            # 핵심부분 max(지난최대value, 이번차수만큼의확보된가치 + 하위순회가아닌전체중의 최대value)
+            print(j,'.',i,'(',j-i,')//',max_value, '/' , price[j-i], '+', max_values[i])
+            # 핵심부분 max(지난최대value(확보된가치는아니야), 이번차수만큼의확보된가치 + 확보된가치중이번차수의최대가치)  누적가치계산
+            # 이번차수의최대가치가 어떻게 들어와있냐고? (사실지난번에 최대치를 구해서 넣어준것)
+            # max_values[i] 자체는 해당배열에서 최대를 돌려주는 것은 아니다!!!! > 그냥 최대값들을 모아놓은것 중에 하위순회i시의 최대값을 리턴해줄뿐...
+            # max_value와 max_values가 어떤차이가 있는지? max_value는 예를들면 같은단위길이당 $1,$3 이 있다고 하면, $3불이 나오기전에는 $1불이 최대 이런개념(하위순회안에서)
+            # max_values는 하위순회가 끝나고 거기서의 최대값을 등록(진짜최대값)
             max_value = max(max_value, price[j-i] + max_values[i])
         max_values.append(max_value)
         print(max_values)
