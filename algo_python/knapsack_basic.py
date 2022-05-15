@@ -49,8 +49,10 @@ def solution(price,n):
             # max_value와 max_values가 어떤차이가 있는지? max_value는 예를들면 같은단위길이당 $1,$3 이 있다고 하면, $3불이 나오기전에는 $1불이 최대 이런개념(하위순회안에서)
             # max_values는 하위순회가 끝나고 거기서의 최대값을 등록(진짜최대값)
             max_value = max(max_value, price[j-i] + max_values[i])
+        
         max_values.append(max_value)
         print(max_values)
+        print('--------')
     return max_values[n]
 
 

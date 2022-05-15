@@ -21,6 +21,7 @@ c = re.search(pattern, string_three)
 
 # capturing group
 pattern2 = '(?:https?:\/\/)?(\w+)\.github.com'  # ?:문자열은 캡처링 그룹에 포함시키지 않는다.(non캡처링그룹으로 지정)
+
 d= re.match(pattern2, 'https://rhostem.github.com')
 # match나 search나 똑같이 결과는 나오는것 같다. 
 print(d.group(1)) # rhostem
@@ -37,7 +38,7 @@ e= re.search(pattern3, 'https://rhostem.github.com')
 pattern4 = '\D+(?=rhostem)'
 gg= re.search(pattern4, 'https://rhostem.github.com')
 # print(gg.group())
-# print(gg.group())
+# print(gg.group(1))
 
 
 
