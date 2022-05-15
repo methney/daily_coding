@@ -1,6 +1,6 @@
 # 쪼갤수있는 Fractional Knapsack Problem
-# 그리디알고리즘
-
+# 그리디알고리즘(눈앞의 최고이익에 집착)
+# 최고가치순으로 일단 정렬하고, 못넣으면 쪼개서라도 넣는다.
 
 def solution(cargo):
     capacity = 5 #kg
