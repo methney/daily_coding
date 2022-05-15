@@ -1,7 +1,8 @@
-# 쪼갤수없는 Fractional Knapsack Problem
+# 쪼갤수없는 One-zero Knapsack Problem
+# 허용한 용량에 넣을수 있는 최대금액을 리턴
+# 이거는 결국 하위순회를 통해 최대값을 갱신하는 방식으로 최대효율을 찾는 문제
 # 쪼갤수있는 문제는 탐욕그리디 알고리즘, 이거는 그냥 하위순환(Recursive)로 대응이라고 하는데..타뷸레이션이래..(6X16) = (가방+1) X (냅색허용량+1)
 # 여기서는 뭐..recursive한거는 없는것 같은데?
-# 허용한 용량에 넣을수 있는 최대금액을 리턴
 # knapsack_basic.py문제를 먼저 풀어볼것..
 
 def solution(cargo):
@@ -28,8 +29,6 @@ def solution(cargo):
                     )
                 )
                 
-
-
             else: # 가방에 넣을수 없는 경우의 무게(근데 이걸 왜 가방에 담는거지?) 
                 print(i,'/',c,'-----', pack[i-1][c], pack)
                 pack[i].append(pack[i-1][c])
