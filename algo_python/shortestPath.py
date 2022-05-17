@@ -116,6 +116,7 @@ def valid(maze, moves):
 # 근데, findEnd끝을 만났을때 출력을 시키면 그 해당값만 출력하니..
 # 마치 shortest 으로 간것처럼..실제로도 먼저 끝난패스가 가장빠른거니깐..
 def findEnd(maze, moves):
+    # 첫번째라인을 뒤져서...시작값을찾아..
     for x, pos in enumerate(maze[0]):
         if pos == "O":
             # 이걸왜하는거지? 첫start를 찾기위해서..
